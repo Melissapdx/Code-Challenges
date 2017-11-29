@@ -23,7 +23,7 @@ function isAnagramOfPalindrome(word) {
     var values = Object.values(seenLetters);
     for(var j = 0; j < values.length; j ++){
         var count = values[j];
-        if(count % 2!= 0) {
+        if(count % 2!== 0) {
             if(seenOddLetter) {
                 return false;
             }
@@ -33,3 +33,18 @@ function isAnagramOfPalindrome(word) {
     }
     return true;
 }
+console.log(isAnagramOfPalindrome("a"));
+console.log(isAnagramOfPalindrome("arceace"));
+console.log(isAnagramOfPalindrome("arceaceb"));
+
+
+//Return number of items in a array, using recursion
+function countRecursively(arr) {
+    if (!(0 in arr)){
+        return 0;
+    }
+    return countRecursively(arr.slice(1)) + 1;
+}
+console.log(countRecursively([]));
+console.log(countRecursively([1,2,3]));
+console.log(countRecursively([3,5,6,7]));
