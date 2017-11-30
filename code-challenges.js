@@ -48,3 +48,9 @@ function countRecursively(arr) {
 console.log(countRecursively([]));
 console.log(countRecursively([1,2,3]));
 console.log(countRecursively([3,5,6,7]));
+
+//Given int, print digits in reverse order,starting with ones in place
+function printDigits(num){
+    var numbers = num.split('');
+    console.log(numbers);
+}
