@@ -1,3 +1,29 @@
+//Given a string, return True or False depending on whether that string 
+//has balanced parentheses.
+
+function balancedParens(phrase){
+    var parens = 0;
+
+    for( var i = 0; i < phrase.length; i++){
+        paren = phrase[i];
+        if(paren === "("){
+            parens = parens + 1;
+        } else if( paren === ")"){
+            parens = parens -1;
+        } if(parens < 0){
+            return false;
+        }
+    }
+    if (parens > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+console.log(balancedParens("()"));
+console.log(balancedParens("("));
+console.log(balancedParens("(This has (too many closes.) ) )"));
 //Anagram of Palindrome
 //A palindrome is a word that reads the same forward and backwards 
 //(eg, “racecar”, “tacocat”). An anagram is a rescrambling of a word (
@@ -51,6 +77,10 @@ console.log(countRecursively([3,5,6,7]));
 
 //Given int, print digits in reverse order,starting with ones in place
 function printDigits(num){
-    var numbers = num.split('');
-    console.log(numbers);
+    while(num){
+        next_digit = num % 10;
+        num = (num - next_digit)/10;
+    }
 }
+
+
