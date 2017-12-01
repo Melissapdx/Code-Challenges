@@ -24,6 +24,17 @@ function balancedParens(phrase){
 console.log(balancedParens("()"));
 console.log(balancedParens("("));
 console.log(balancedParens("(This has (too many closes.) ) )"));
+
+
+//Finding highest and lowest numbers in string, using max and min
+function highAndLow(numbers) {
+  numbers = numbers.split(' ').map(Number);
+  var min = Math.min.apply(null,numbers);
+  var max = Math.max.apply(null,numbers);
+  
+  return max + ' ' + min;
+}
+console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 //Anagram of Palindrome
 //A palindrome is a word that reads the same forward and backwards 
 //(eg, “racecar”, “tacocat”). An anagram is a rescrambling of a word (
