@@ -10,7 +10,8 @@ function balancedParens(phrase){
             parens = parens + 1;
         } else if( paren === ")"){
             parens = parens -1;
-        } if(parens < 0){
+        }
+        if(parens < 0){
             return false;
         }
     }
@@ -25,6 +26,32 @@ console.log(balancedParens("()"));
 console.log(balancedParens("("));
 console.log(balancedParens("(This has (too many closes.) ) )"));
 
+//Write a function that will return the count of distinct case-insensitive 
+//alphabetic characters and numeric digits that occur more than once in the input 
+//string. The input string can be assumed to contain only alphabets 
+//(both uppercase and lowercase) and numeric digits.
+function duplicateCount(text){
+  text = text.toLowerCase();
+  var duplicates = 0;
+  var letterCount = {};
+  //Count letters 
+  for( var i = 0; i < text.length; i++){
+    var letter = text[i];
+    if(!(letter in letterCount)){
+      letterCount[letter] = 1;
+    } else {
+      letterCount[letter] +=1;
+    }
+  }
+  //if letter account occurs more than once it's a duplicate and added to dupe count
+  for(var letter in letterCount){
+    var count = letterCount[letter];
+  if(count > 1){
+    duplicates +=1;
+    }
+  }
+  return duplicates;
+}
 
 //Finding highest and lowest numbers in string, using max and min
 function highAndLow(numbers) {
