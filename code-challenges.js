@@ -26,40 +26,52 @@ console.log(balancedParens("()"));
 console.log(balancedParens("("));
 console.log(balancedParens("(This has (too many closes.) ) )"));
 
+//Write a function that will calclulate a factorial
+//!3 = 6(3*2*1)
+
+function factorial(n){
+    if(n == 0){
+        return 1;
+    }
+    return n * factorial(n-1);
+}
+console.log(factorial(3));
+console.log(factorial(10));
 //Write a function that will return the count of distinct case-insensitive 
 //alphabetic characters and numeric digits that occur more than once in the input 
 //string. The input string can be assumed to contain only alphabets 
 //(both uppercase and lowercase) and numeric digits.
+
 function duplicateCount(text){
-  text = text.toLowerCase();
-  var duplicates = 0;
-  var letterCount = {};
-  //Count letters 
-  for( var i = 0; i < text.length; i++){
-    var letter = text[i];
-    if(!(letter in letterCount)){
-      letterCount[letter] = 1;
-    } else {
-      letterCount[letter] +=1;
+    text = text.toLowerCase();
+    var duplicates = 0;
+    var letterCount = {};
+    //Count letters 
+    for( var i = 0; i < text.length; i++){
+      var letter = text[i];
+      if(!(letter in letterCount)){
+        letterCount[letter] = 1;
+      } else {
+        letterCount[letter] +=1;
+      }
     }
-  }
-  //if letter account occurs more than once it's a duplicate and added to dupe count
-  for(var letter in letterCount){
-    var count = letterCount[letter];
-  if(count > 1){
-    duplicates +=1;
+    //if letter account occurs more than once it's a duplicate and added to dupe count
+    for(var letter in letterCount){
+      var count = letterCount[letter];
+    if(count > 1){
+      duplicates +=1;
+      } 
     }
-  }
-  return duplicates;
+    return duplicates;
 }
 
 //Finding highest and lowest numbers in string, using max and min
 function highAndLow(numbers) {
-  numbers = numbers.split(' ').map(Number);
-  var min = Math.min.apply(null,numbers);
-  var max = Math.max.apply(null,numbers);
-  
-  return max + ' ' + min;
+    numbers = numbers.split(' ').map(Number);
+    var min = Math.min.apply(null,numbers);
+    var max = Math.max.apply(null,numbers);
+    
+    return max + ' ' + min;
 }
 console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 //Anagram of Palindrome
