@@ -26,11 +26,61 @@ console.log(balancedParens("()"));
 console.log(balancedParens("("));
 console.log(balancedParens("(This has (too many closes.) ) )"));
 
+// Write a method palindrome_chain_length which takes a positive number and 
+//returns the number of special steps needed to obtain a palindrome. 
+//The special step is: "reverse the digits, and add to the original number". 
+//If the resulting number is not a palindrome, repeat the procedure with the sum 
+//until the resulting number is a palindrome.
+
+var palindromeChainLength = function(n,steps) {
+    var numReverse = n.toString().split('').reverse().join('');
+    var strToNum = parseInt(numReverse);
+    
+    if(steps === undefined){
+        steps = 0;
+    }
+ 
+    if(isPalindrome(n) === true){
+        return steps;
+    } else {
+        steps += 1;
+        var numToCheck = n + strToNum;
+      return palindromeChainLength(numToCheck,steps);
+    }
+
+
+};
+
+var isPalindrome = function(num) {
+    var nums = num.toString().split('');
+    var numCounts = {};
+    var seenOdd = 0;
+    
+    for( var i = 0; i<nums.length;i++){
+        var n = nums[i];
+        if(!(n in numCounts)) {
+          numCounts[n] = 1;
+        } else {
+          numCounts[n]+=1;
+        }
+    }
+    for(var key in numCounts){
+        var values = numCounts[key]
+        if(values % 2 !== 0){
+          seenOdd += 1;
+        }
+    }
+    if(seenOdd === 0 || seenOdd === 1){
+      return true;
+    } else {
+      return false;
+    }
+}
 //Write a function that will calclulate a factorial
 //!3 = 6(3*2*1)
 
 function factorial(n){
-    if(n == 0){
+    if(n === 0){
         return 1;
     }
     return n * factorial(n-1);
