@@ -40,14 +40,24 @@ class LinkedList(object):
 			current = current.next
 			
 	def delete_node(self, node_to_delete):
+        #if removing head
+		if self.head is not None and self.head.data == node_to_delete:
+            self.head = self.head.next
+            if self.head is None:
+                self.tail = None
+        #if removing something that's not head
+        current = self.head
+        while current.next is not None:
 
-		next_node = self.node_to_delete.next
+            #if node after head reassign next node
+            if current.next.data == value:
+                current.next = current.next.next
+                if current.next is None:
+                    self.tail = current
+                return
+            else: 
+                current = current.next
 
-		if next_node:
-			node_to_delete.data = next_node.data
-			node_to_delete.next = next_node.next
-		else:
-			raise Exception("Can't delete last node")
 
 fruits = LinkedList()
 fruits.add_node("apple")
