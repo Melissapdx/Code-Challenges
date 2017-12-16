@@ -39,12 +39,42 @@ class LinkedList(object):
 			print current.data
 			current = current.next
 			
+	def delete_node(self, node_to_delete):
 
+		next_node = self.node_to_delete.next
 
+		if next_node:
+			node_to_delete.data = next_node.data
+			node_to_delete.next = next_node.next
+		else:
+			raise Exception("Can't delete last node")
 
 fruits = LinkedList()
 fruits.add_node("apple")
 fruits.add_node("berry")
 fruits.add_node("cherry")
 fruits.print_list()
+fruits.delete_node("berry")
+fruits.print_list()
+
+def isHappy(n):
+    """
+    :type n: int
+    :rtype: bool
+    """
+    nums_seen = set()
+    while n != 1:
+        sum = 0
+        num_list = map(int,str(n))
+        for num in num_list:
+            num_pow = num ** 2
+            sum += num_pow
+        n = sum
+        if num in nums_seen:
+            return False
+        else:  
+            nums_seen.add(n)
+    return True
+isHappy(19)
+isHappy(4)
 
