@@ -88,3 +88,29 @@ def isHappy(n):
 isHappy(19)
 isHappy(4)
 
+def searchInsert(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    lower = 0
+    upper = len(nums)-1
+
+    if target < nums[0]:
+        return 0
+
+    if target > nums[len(nums)-1]:
+        return len(nums)
+
+    while lower <= upper:
+        index = lower + (upper - lower)/ 2
+        if nums[index] == target:
+            return index
+        elif nums[index] < target:
+            lower = index + 1
+        else: 
+            upper = index - 1
+    return lower
+searchInsert([1,3,5,6],5)
+searchInsert([1,3,5,6],2)
